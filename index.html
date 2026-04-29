@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Víctor Miranda Alonso</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .cv-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            animation: slideIn 1s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .profile-photo {
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-image {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-content {
+            flex: 1;
+            position: relative;
+            z-index: 1;
+        }
+
+        .name {
+            font-size: 3em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            line-height: 1.1;
+        }
+
+        .title {
+            font-size: 1.4em;
+            opacity: 0.9;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9em;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .badge:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            padding: 40px;
+        }
+
+        .left-section {
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+        }
+
+        .right-section {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .section {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            border-left: 5px solid #2a5298;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .section-title {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: #2a5298;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .icon {
+            width: 24px;
+            height: 24px;
+        }
+
+        .objective {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #444;
+            text-align: justify;
+            position: relative;
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #1976d2;
+        }
+
+        .experience-item {
+            background: linear-gradient(135deg, #e8f5e8 0%, #c8e6c9 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border-left: 5px solid #388e3c;
+            position: relative;
+        }
+
+        .job-title {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #2e7d32;
+            margin-bottom: 5px;
+        }
+
+        .company {
+            font-size: 1.1em;
+            color: #1565c0;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .date-location {
+            color: #666;
+            font-size: 0.95em;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .job-description {
+            color: #444;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .dal-badges {
+            margin: 15px 0;
+        }
+
+        .dal-badge {
+            background: linear-gradient(135deg, #ff5722 0%, #f44336 100%);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 600;
+            margin-right: 10px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 3px 8px rgba(244, 67, 54, 0.3);
+        }
+
+        .tech-section {
+            background: rgba(42, 82, 152, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        .tech-label {
+            font-weight: 700;
+            color: #2a5298;
+            margin-bottom: 8px;
+            font-size: 0.9em;
+        }
+
+        .tech-list {
+            color: #555;
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+
+        .education-item {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffcc02 0.1%, #ffe0b2 100%);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #f57c00;
+        }
+
+        .degree-title {
+            font-size: 1.1em;
+            font-weight: 700;
+            color: #e65100;
+            margin-bottom: 8px;
+        }
+
+        .university {
+            color: #666;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .sidebar-section {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            border-left: 4px solid #667eea;
+        }
+
+        .sidebar-title {
+            font-size: 1.1em;
+            font-weight: 700;
+            color: #2a5298;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-size: 0.95em;
+            color: #444;
+            line-height: 1.4;
+        }
+
+        .contact-icon {
+            width: 18px;
+            height: 18px;
+            color: #2a5298;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .skill-item {
+            background: linear-gradient(135deg, #e8eaf6 0%, #c5cae9 100%);
+            color: #3f51b5;
+            padding: 8px 15px;
+            border-radius: 20px;
+            margin: 6px 0;
+            font-size: 0.9em;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.2s ease;
+        }
+
+        .skill-item:hover {
+            transform: translateX(5px);
+        }
+
+        .skill-item::before {
+            content: '▸';
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .language-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(42, 82, 152, 0.1);
+            font-weight: 500;
+        }
+
+        .language-item:last-child {
+            border-bottom: none;
+        }
+
+        .language-level {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: 700;
+        }
+
+        .certificate-item {
+            background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+            padding: 12px 16px;
+            border-radius: 10px;
+            margin: 8px 0;
+            border-left: 3px solid #8e24aa;
+            font-size: 0.9em;
+            font-weight: 500;
+            color: #4a148c;
+            transition: transform 0.2s ease;
+        }
+
+        .certificate-item:hover {
+            transform: translateX(3px);
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            .cv-container {
+                margin: 10px;
+                border-radius: 15px;
+            }
+
+            .header {
+                flex-direction: column;
+                text-align: center;
+                padding: 30px 20px;
+            }
+
+            .profile-image {
+                width: 130px;
+                height: 130px;
+                font-size: 1.6em;
+            }
+
+            .name {
+                font-size: 2.2em;
+            }
+
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                padding: 25px;
+            }
+
+            .badges {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cv-container">
+        <div class="header">
+            <div class="profile-photo">
+                <div class="profile-image">
+                    <!-- Replace 'victor_miranda.jpg.JPG' with the actual path to your photo -->
+                    <img src="victor_miranda.jpg.JPG" alt="Víctor Miranda Alonso" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
+                </div>
+            </div>
+            <div class="header-content">
+                <h1 class="name">Víctor Miranda Alonso</h1>
+                <p class="title">Software Engineer</p>
+                <div class="badges">
+                    <span class="badge">Testing & Validation</span>
+                    <span class="badge">Critical Systems</span>
+                    <span class="badge">Agile Methodologies</span>
+                    <span class="badge">DAL A/C</span>
+                    <span class="badge">DO-178C/DO-254</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="left-section">
+                <div class="section">
+                    <h2 class="section-title">
+                        <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1L14 2V4H13V7H14L15 6L20 11L21 9Z"/>
+                        </svg>
+                        Professional Objective
+                    </h2>
+                    <div class="objective">
+                        <p>
+                            Software Engineer focused on <span class="highlight">QA and software quality</span>, specialized in testing and validation of critical systems, with experience in <span class="highlight">API testing and service integration</span>. I work with agile methodologies and tools such as Jira, and have knowledge in API lifecycle management using <span class="highlight">WSO2 API Manager</span>.
+                        </p>
+
+                        <p style="margin-top: 12px;">
+                            My goal is to continue evolving towards a more technical profile, combining software quality with APIs and integration, in highly demanding technical environments.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2 class="section-title">
+                        <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20 6h-2.18c.11-.31.18-.65.18-1a2.996 2.996 0 0 0-5.5-1.65l-.5.67-.5-.68C10.96 2.54 10 2 10 2v3H8a2 2 0 0 0-2 2v11c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2z"/>
+                        </svg>
+                        Professional Experience
+                    </h2>
+
+                    <div class="experience-item">
+                        <div class="job-title">SOFTWARE ENGINEER</div>
+                        <div class="company">Airtificial Aerospace & Defense Engineering SAU</div>
+                        <div class="date-location">Feb 2024 - Present | Seville, Spain</div>
+
+                        <div class="job-description">
+                            <p><strong>Software and hardware validation and verification</strong> in critical environments under <strong>DO-178C</strong> and <strong>DO-254</strong> standards. Working with agile methodologies (Scrum/Kanban) and regular communication with international teams and clients.</p>
+                        </div>
+
+                        <div class="dal-badges">
+                            <span class="dal-badge">DAL A - Critical Level</span>
+                            <span class="dal-badge">DAL C - Major Level</span>
+                        </div>
+
+                        <div class="job-description">
+                            <p>Development and automation of a delivery note management system in an internal project, optimizing processes and reducing management times.</p>
+
+                            <p style="margin-top: 12px;">
+                            Participation in an industrial automation project (Digital Twin), performing <strong>API and endpoint testing using Postman</strong>, validating the correct operation of services and data integrity.
+                            </p>
+
+                            <p style="margin-top: 12px;">
+                            Use of <strong>PostgreSQL</strong> for data validation, performing SQL queries to verify that the information obtained in the tests matched the data stored in the database.
+                            </p>
+
+                            <p style="margin-top: 12px;">
+                                Knowledge of the complete API lifecycle <strong>(design, publication, security, and deployment)</strong>, as well as its management through <strong>WSO2 API Manager</strong>, including architecture configuration, security (OAuth2, API Keys), testing, policy creation, and monitoring.
+                            </p>
+                        </div>
+
+                        <div class="tech-section">
+                            <div class="tech-label">Tools:</div>
+                            <div class="tech-list">GNAT Studio, PyCharm, Visual Studio/VS Code, Eclipse, Git, GitHub, ClickUp, Dimensions, Jira, PostgreSQL, STM32CubeIDE, Postman, WSO2 API Manager, NanoEdge AI, Docker, Kubernetes</div>
+
+                            <div class="tech-label" style="margin-top: 12px;">Technologies:</div>
+                            <div class="tech-list">Python, C, C++, SQL, HTML, MariaDB/MySQL</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2 class="section-title">
+                        <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M9,12L11,14L15,10L20,15H4L9,12M2,6H22V18H2V6M4,8V16H20V8H4Z"/>
+                        </svg>
+                        Certificates & Courses
+                    </h2>
+
+                    <div class="certificate-item">AVIONICS ECOSYSTEM: DO-178C, DO-254 & ARP4754A</div>
+                    <div class="certificate-item">WSO2 CERTIFIED API MANAGER PRACTITIONER – V4.6</div>
+                    <div class="certificate-item">PYTHON INTRODUCTION</div>
+                    <div class="certificate-item">ADVANCED PYTHON</div>
+                    <div class="certificate-item">GOOGLE: ARTIFICIAL INTELLIGENCE AND PRODUCTIVITY</div>
+                    <div class="certificate-item">ADVANCED CYBERSECURITY IN OPERATIONAL TECHNOLOGY ENVIRONMENTS</div>
+                </div>
+            </div>
+
+            <div class="right-section">
+                <div class="sidebar-section">
+                    <div class="sidebar-title">Contact</div>
+                    <div class="contact-item">
+                        <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z"/>
+                        </svg>
+                        <div>vicmiralo4@gmail.com</div>
+                    </div>
+                    <div class="contact-item">
+                        <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"/>
+                        </svg>
+                        <div>+34 672 68 51 90</div>
+                    </div>
+                    <div class="contact-item">
+                        <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z"/>
+                        </svg>
+                        <div>Seville, Spain</div>
+                    </div>
+                    <div class="contact-item">
+                        <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19,19H5V8H19M16,1V3H8V1H6V3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3H18V1M17,12H12V17H17V12Z"/>
+                        </svg>
+                        <div>Feb 12, 2000</div>
+                    </div>
+                    <div class="contact-item">
+                        <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"/>
+                        </svg>
+                        <div>Spanish</div>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-title">Education</div>
+                    <div style="color: #444; font-weight: 600; font-size: 0.9em; line-height: 1.4;">
+                        <div><strong>Bachelor's Degree in Computer Engineering - Computer Architecture</strong></div>
+                        <div style="color: #666; margin-top: 2px;">University of Seville (Sep 2018 - Jul 2024)</div>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-title">Skills</div>
+                    <div class="skill-item">Teamwork in international environments</div>
+                    <div class="skill-item">Organization and time management</div>
+                    <div class="skill-item">Problem-solver</div>
+                    <div class="skill-item">Adaptability to changing environments</div>
+                    <div class="skill-item">Critical thinking</div>
+                    <div class="skill-item">Incident resolution and debugging</div>
+                    <div class="skill-item">Continuous learning</div>
+                    <div class="skill-item">Artificial Intelligence (tool usage)</div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-title">Languages</div>
+                    <div class="language-item">
+                        <span><strong>Spanish</strong></span>
+                        <span class="language-level">Native</span>
+                    </div>
+                    <div class="language-item">
+                        <span><strong>English</strong></span>
+                        <span class="language-level">B2</span>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-title">Specialization</div>
+                    <div class="skill-item">Software Testing and Validation</div>
+                    <div class="skill-item">API Testing (Postman)</div>
+                    <div class="skill-item">API Management and Lifecycle</div>
+                    <div class="skill-item">Critical Systems (DO-178C & DO-254)</div>
+                    <div class="skill-item">Agile Methodologies (Scrum/Kanban)</div>
+                    <div class="skill-item">DAL A & DAL C Validation</div>
+                    <div class="skill-item">Data Validation with SQL</div>
+                    <div class="skill-item">Project Management with Jira</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
